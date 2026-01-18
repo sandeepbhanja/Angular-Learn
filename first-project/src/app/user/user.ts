@@ -1,5 +1,16 @@
-import { Component,signal, computed } from '@angular/core';
-import { DUMMY_USERS } from '../../dummy-users';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+// type UserType = {
+//   id: string,
+//   name :string,
+//   avatar:string
+// }
+
+interface UserType {
+  id: string;
+  name: string;
+  avatar: string;
+}
 
 @Component({
   selector: 'app-user',
@@ -8,19 +19,19 @@ import { DUMMY_USERS } from '../../dummy-users';
   styleUrl: './user.css',
 })
 export class User {
+  @Input({ required: true }) user!: UserType;
+  @Input({ required: true }) selected!: boolean;
+  @Output() select = new EventEmitter<string>();
 
-  selectedUser = signal(DUMMY_USERS[this.getRandomIndex()])
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+  // output = output<string>();
 
-  onClick(){
-    this.selectedUser.set(DUMMY_USERS[this.getRandomIndex()])
+  get userImage() {
+    return '/assets/users/' + this.user.avatar;
   }
 
-  get userImage(){
-    return 'assets/users/'+this.selectedUser().avatar
+  onSelectedUser() {
+    this.select.emit(this.user.id);
   }
-
-  getRandomIndex(){
-    return Math.floor(Math.random() * DUMMY_USERS.length )
-  }
-
 }
