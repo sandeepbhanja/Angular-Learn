@@ -8,12 +8,12 @@
     <ul>
         @for (task of selectedUserTasks; track $index) {
         <li>
-            <app-indivtask [task]="task" (complete)="onCompleteTask($event)"></app-indivtask>
+            <app-indivtask [task]="task"></app-indivtask>
         </li>
         }
     </ul>
 </section>
 
 @if (taskFormToShow) {
-<app-taskform (cancel)="isTaskAddingCancelled()" (newTask)="addTask($event)"></app-taskform>
+<app-taskform (cancel)="isTaskAddingCancelled()" (newTask)="addTask($event)" [userId]="userId()"></app-taskform>
 }

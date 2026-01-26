@@ -1,11 +1,12 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from '../task/task.service';
 
-interface TaskInterface{
-  id?:string,
-  title?:string,
-  summary?:string,
-  dueDate?:string
+interface TaskInterface {
+  id?: string;
+  title?: string;
+  summary?: string;
+  dueDate?: string;
 }
 
 @Component({
@@ -20,15 +21,20 @@ export class Taskform {
   enteredTitle = signal('');
   enteredSummary = signal('');
   enteredDueDate = signal('');
+  userId = input.required<string>();
 
-  onSubmit(){
-    let task:TaskInterface = {
+  private taskService = inject(TaskService);
+
+  onSubmit() {
+    let task: TaskInterface = {
       id: crypto.randomUUID(),
       title: this.enteredTitle(),
       summary: this.enteredSummary(),
-      dueDate : this.enteredDueDate()
+      dueDate: this.enteredDueDate(),
     };
-    this.newTask.emit(task)
+    this.newTask.emit(task);
+
+    this.taskService.setTask(task, this.userId());
   }
 
   onCancel() {
