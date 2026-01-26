@@ -3,21 +3,22 @@
         <tr>
             <th>Year</th>
             <th>Interest</th>
-            <th>Value End of Year</th>
-            <th>Annual Investment</th>
+            <th>Value End</th>
+            <th>Annual Invest</th>
             <th>Total Interest</th>
-            <th>Total Amount Invested</th>
+            <th>Total Invested</th>
         </tr>
     </thead>
+
     <tbody>
-        @for (invest of investmenTableData(); track $index) {
+        @for (invest of investmenTableData(); track invest.year) {
         <tr>
-            <td>{{invest.year}}</td>
-            <td>{{invest.interest}}</td>
-            <td>{{invest.valueEndOfYear}}</td>
-            <td>{{invest.annualInvestment}}</td>
-            <td>{{invest.totalInterest}}</td>
-            <td>{{invest.totalAmountInvested}}</td>
+            <td>{{ invest.year}}</td>
+            <td>{{ invest.interest + " %"}}</td>
+            <td>{{ invest.valueEndOfYear | currency:"INR" }}</td>
+            <td>{{ invest.annualInvestment | currency:"INR"}}</td>
+            <td>{{ invest.totalInterest + " %"}}</td>
+            <td>{{ invest.totalAmountInvested | currency:"INR"}}</td>
         </tr>
         }
     </tbody>
