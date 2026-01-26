@@ -1,0 +1,6 @@
+<app-header></app-header>
+<app-user-input (investmentDetailsToShow)="detailsReceived($event)"></app-user-input>
+
+@if (showInvestmentTable()) {
+<app-investment-details [investmentDetailsReceived]="investDetails()"></app-investment-details>
+}
