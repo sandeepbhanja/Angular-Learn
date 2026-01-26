@@ -1,13 +1,11 @@
 import { Component, input } from '@angular/core';
-import { Indivtask } from '../indivtask/indivtask';
-import { Taskform } from '../taskform/taskform';
 import { TaskService } from './task.service';
 
 @Component({
   selector: 'app-task',
-  imports: [Indivtask, Taskform],
   templateUrl: './task.html',
   styleUrl: './task.css',
+  standalone: false,
 })
 export class Task {
   username = input();
@@ -15,8 +13,7 @@ export class Task {
   taskFormToShow: boolean = false;
   buttonName: string = 'Add Task';
 
-  constructor(private taskService:TaskService){
-  }
+  constructor(private taskService: TaskService) {}
 
   get selectedUserTasks() {
     return this.taskService.getTask(this.userId()!);

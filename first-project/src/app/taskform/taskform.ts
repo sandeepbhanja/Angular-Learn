@@ -1,5 +1,4 @@
 import { Component, inject, input, output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task/task.service';
 
 interface TaskInterface {
@@ -11,9 +10,9 @@ interface TaskInterface {
 
 @Component({
   selector: 'app-taskform',
-  imports: [FormsModule],
   templateUrl: './taskform.html',
   styleUrl: './taskform.css',
+  standalone: false,
 })
 export class Taskform {
   cancel = output();

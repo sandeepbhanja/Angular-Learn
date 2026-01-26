@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Card } from "../shared/card/card";
 
 // type UserType = {
 //   id: string,
@@ -15,9 +14,9 @@ interface UserType {
 
 @Component({
   selector: 'app-user',
-  imports: [Card],
   templateUrl: './user.html',
   styleUrl: './user.css',
+  standalone:false
 })
 export class User {
   @Input({ required: true }) user!: UserType;

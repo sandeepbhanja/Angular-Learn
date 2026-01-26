@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { ɵEmptyOutletComponent } from "@angular/router";
 
 @Component({
   selector: 'app-card',
-  imports: [ɵEmptyOutletComponent],
   templateUrl: './card.html',
   styleUrl: './card.css',
+  standalone: false,
 })
-export class Card {
-
-}
+export class Card {}

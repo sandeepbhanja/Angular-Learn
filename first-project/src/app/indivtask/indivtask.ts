@@ -1,6 +1,4 @@
-import { DatePipe } from '@angular/common';
-import { Component, input, output } from '@angular/core';
-import { Card } from '../shared/card/card';
+import { Component, input } from '@angular/core';
 import { TaskService } from '../task/task.service';
 
 interface Task {
@@ -13,9 +11,9 @@ interface Task {
 
 @Component({
   selector: 'app-indivtask',
-  imports: [Card, DatePipe],
   templateUrl: './indivtask.html',
   styleUrl: './indivtask.css',
+  standalone: false,
 })
 export class Indivtask {
   task = input.required<Task>();
@@ -23,6 +21,6 @@ export class Indivtask {
   constructor(private taskService: TaskService) {}
 
   onCompleteTask() {
-    this.taskService.removeTask(this.task()?.id!)
+    this.taskService.removeTask(this.task()?.id!);
   }
 }
