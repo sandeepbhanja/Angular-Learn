@@ -14,10 +14,10 @@
         @for (invest of investmenTableData(); track invest.year) {
         <tr>
             <td>{{ invest.year}}</td>
-            <td>{{ invest.interest + " %"}}</td>
+            <td>{{ invest.interest | currency:"INR"}}</td>
             <td>{{ invest.valueEndOfYear | currency:"INR" }}</td>
             <td>{{ invest.annualInvestment | currency:"INR"}}</td>
-            <td>{{ invest.totalInterest + " %"}}</td>
+            <td>{{ invest.totalInterest | currency:"INR"}}</td>
             <td>{{ invest.totalAmountInvested | currency:"INR"}}</td>
         </tr>
         }

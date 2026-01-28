@@ -26,6 +26,11 @@ export class UserInput {
       expectedReturn: this.expectedReturn(),
     };
 
+    this.initialInvestment.set(0)
+    this.annualInvestment.set(0)
+    this.duration.set(0)
+    this.expectedReturn.set(0)
+
     let investment = this.investmentService.calculateInvestmentResults(investmentData);
     this.investmentDetailsToShow.emit(investment);
   }
